@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CHULO SHOP — Moda Urbana</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   VARIABLES
+═══════════════════════════════════════════ */
+:root {
+  --bg:      #0d0d0d;
+  --surface: #161616;
+  --card:    #1e1e1e;
+  --border:  #2a2a2a;
+  --white:   #f5f5f5;
+  --gray:    #888;
+  --red:     #e63329;
+  --gold:    #c8a84b;
+  --nav-h:   60px;
+}
+
+/* ═══════════════════════════════════════════
+   RESET — sin reglas img globales que rompan Safari
+═══════════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ═══════════════════════════════════════════
+   BARRA SUPERIOR
+═══════════════════════════════════════════ */
+.topbar {
+  background: var(--red);
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 1rem;
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  height: var(--nav-h);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+}
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 5px;
+  color: var(--white);
+  text-decoration: none;
+  margin-right: auto;
+}
+.logo span { color: var(--red); }
+
+.gender-btns {
+  display: -webkit-flex;
+  display: flex;
+  gap: 4px;
+}
+.gbtn {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 6px 18px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--gray);
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.gbtn:hover { border-color: var(--white); color: var(--white); }
+.gbtn.active { background: var(--white); color: var(--bg); border-color: var(--white); }
+.gbtn.women.active { background: var(--red); border-color: var(--red); color: var(--white); }
+
+.cart-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  padding: 8px 16px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 2px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 8px;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.cart-btn:hover { opacity: 0.85; }
+.cart-badge {
+  background: var(--white);
+  color: var(--bg);
+  border-radius: 50%;
+  width: 18px; height: 18px;
+  font-size: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  min-height: 420px;
+  background: var(--surface);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(230,51,41,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-text { max-width: 600px; position: relative; z-index: 1; }
+.hero-tag {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: block;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  line-height: 0.9;
+  margin-bottom: 1.2rem;
+  /* fallback para Safari < 13 */
+}
+.hero-title em { color: var(--red); font-style: normal; }
+.hero-sub {
+  color: var(--gray);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 420px;
+}
+.hero-cta {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  padding: 14px 36px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 3px;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+.hero-cta:hover { opacity: 0.85; }
+.hero-deco {
+  position: absolute;
+  right: 4rem; top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 9rem;
+  opacity: 0.07;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: -4px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ═══════════════════════════════════════════
+   CATEGORÍAS
+═══════════════════════════════════════════ */
+.cats {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: -webkit-flex;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1.5rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 900;
+  gap: 0;
+}
+.cats::-webkit-scrollbar { display: none; }
+.ctab {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--gray);
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.ctab:hover { color: var(--white); }
+.ctab.active { color: var(--white); border-bottom-color: var(--red); font-weight: 600; }
+
+/* ═══════════════════════════════════════════
+   SHOP SECTION
+═══════════════════════════════════════════ */
+.shop {
+  padding: 2.5rem 1.5rem 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.shop-header {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.shop-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 4px;
+}
+.shop-count { color: var(--gray); font-size: 13px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════════
+   PRODUCT CARD
+═══════════════════════════════════════════ */
+.pcard {
+  background: var(--card);
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+  overflow: hidden;
+}
+.pcard:hover { background: #242424; }
+
+/* ── imagen del producto: aspect-ratio 3/4 compatible con todos los browsers ── */
+.pimg-wrap {
+  position: relative;
+  width: 100%;
+  /* FALLBACK para Safari < 15: padding-top fuerza la proporción */
+  padding-top: 133.33%;
+  background: #252525;
+  overflow: hidden;
+}
+@supports (aspect-ratio: 3/4) {
+  .pimg-wrap { padding-top: 0; aspect-ratio: 3/4; }
+}
+
+/* El contenedor absoluto dentro del fallback */
+.pimg-inner {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+@supports (aspect-ratio: 3/4) {
+  .pimg-inner {
+    position: static;
+    width: 100%; height: 100%;
+  }
+}
+
+/* La imagen real — object-fit solo aquí, NUNCA como regla global */
+.pimg-inner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  /* prefijos por si acaso */
+  -o-object-fit: cover;
+  -o-object-position: center top;
+}
+
+.pbadge {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  z-index: 2;
+}
+.pbadge-sale  { background: var(--red);  color: var(--white); }
+.pbadge-new   { background: var(--white); color: var(--bg); }
+.pbadge-hot   { background: var(--gold);  color: var(--bg); }
+
+.pwish {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 10px; right: 10px;
+  z-index: 2;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.pwish:hover { background: rgba(0,0,0,0.8); }
+.pwish.on { color: var(--red); }
+
+.pinfo {
+  padding: 14px 14px 18px;
+  border-top: 1px solid var(--border);
+}
+.pbrand {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+.pname { font-size: 14px; font-weight: 500; margin-bottom: 10px; line-height: 1.3; }
+.pprice-row {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.pprice { font-size: 16px; font-weight: 700; }
+.pprice-old { font-size: 12px; color: var(--gray); text-decoration: line-through; }
+.pdiscount { font-size: 11px; color: var(--red); font-weight: 700; }
+
+.padd {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  padding: 9px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--white);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.padd:hover { background: var(--white); color: var(--bg); border-color: var(--white); }
+.padd.added { background: var(--red); border-color: var(--red); color: var(--white); }
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════ */
+.lb {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(0,0,0,0.96);
+  z-index: 5000;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.lb.open { opacity: 1; pointer-events: all; }
+.lb-head {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+}
+.lb-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 3px; }
+.lb-close {
+  -webkit-appearance: none; appearance: none;
+  background: none; border: none; color: var(--white);
+  font-size: 1.8rem; cursor: pointer; line-height: 1;
+  -webkit-transition: color 0.2s; transition: color 0.2s;
+}
+.lb-close:hover { color: var(--red); }
+.lb-body {
+  -webkit-flex: 1; flex: 1;
+  display: -webkit-flex; display: flex;
+  -webkit-align-items: center; align-items: center;
+  -webkit-justify-content: center; justify-content: center;
+  position: relative; overflow: hidden; min-height: 0;
+  padding: 1.5rem;
+}
+.lb-body img {
+  max-width: 100%;
+  max-height: 72vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  -o-object-fit: contain;
+  border-radius: 2px;
+}
+.lb-emoji { font-size: 10rem; }
+.lb-arrow {
+  -webkit-appearance: none; appearance: none;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--white);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: -webkit-flex; display: flex;
+  -webkit-align-items: center; align-items: center;
+  -webkit-justify-content: center; justify-content: center;
+  -webkit-transition: all 0.2s; transition: all 0.2s;
+  z-index: 2;
+}
+.lb-arrow:hover { background: var(--red); border-color: var(--red); }
+.lb-arrow.prev { left: 1rem; }
+.lb-arrow.next { right: 1rem; }
+.lb-foot {
+  padding: 1rem 1.5rem 1.5rem;
+  -webkit-flex-shrink: 0; flex-shrink: 0;
+  text-align: center;
+}
+.lb-counter { font-size: 12px; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; }
+
+/* ═══════════════════════════════════════════
+   CARRITO
+═══════════════════════════════════════════ */
+.cart-overlay {
+  position: fixed; top:0; right:0; bottom:0; left:0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+  opacity: 0; pointer-events: none;
+  -webkit-transition: opacity 0.3s; transition: opacity 0.3s;
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+
+.cart-panel {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 400px; max-width: 100vw;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: 2001;
+  display: -webkit-flex; display: flex;
+  -webkit-flex-direction: column; flex-direction: column;
+  -webkit-transform: translateX(100%); transform: translateX(100%);
+  -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.cart-panel.open { -webkit-transform: translateX(0); transform: translateX(0); }
+
+.cart-head {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: -webkit-flex; display: flex;
+  -webkit-align-items: center; align-items: center;
+  -webkit-justify-content: space-between; justify-content: space-between;
+}
+.cart-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; }
+.cart-x {
+  -webkit-appearance: none; appearance: none;
+  background: none; border: none; color: var(--white);
+  font-size: 1.5rem; cursor: pointer; line-height: 1;
+}
+
+.cart-items {
+  -webkit-flex: 1; flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 1.5rem;
+}
+.cart-empty-msg {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--gray);
+}
+.cart-empty-msg .big { font-size: 3rem; margin-bottom: 1rem; }
+
+.citem {
+  display: -webkit-flex; display: flex;
+  gap: 12px;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.citem-img {
+  width: 64px; height: 80px;
+  background: var(--card);
+  -webkit-flex-shrink: 0; flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  display: -webkit-flex; display: flex;
+  -webkit-align-items: center; align-items: center;
+  -webkit-justify-content: center; justify-content: center;
+  font-size: 2rem;
+}
+/* Imagen en el carrito: cover, sin forzar aspect-ratio */
+.citem-img img {
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
+  -o-object-fit: cover;
+  object-position: center top;
+}
+.citem-info { -webkit-flex: 1; flex: 1; }
+.citem-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
+.citem-brand { font-size: 11px; color: var(--gray); margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
+.citem-price { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.citem-controls {
+  display: -webkit-flex; display: flex;
+  -webkit-align-items: center; align-items: center;
+  gap: 8px;
+}
+.qty-b {
+  -webkit-appearance: none; appearance: none;
+  width: 24px; height: 24px;
+  border: 1px solid var(--border);
+  background: none; color: var(--white);
+  cursor: pointer; font-size: 1rem; border-radius: 2px;
+  display: -webkit-flex; display: flex;
+  -webkit-align-items: center; align-items: center;
+  -webkit-justify-content: center; justify-content: center;
+  -webkit-transition: all 0.15s; transition: all 0.15s;
+}
+.qty-b:hover { background: var(--white); color: var(--bg); border-color: var(--white); }
+.qty-n { font-size: 13px; font-weight: 600; min-width: 18px; text-align: center; }
+.del-b {
+  -webkit-appearance: none; appearance: none;
+  background: none; border: none;
+  color: var(--gray); cursor: pointer; font-size: 16px; margin-left: auto;
+  -webkit-transition: color 0.2s; transition: color 0.2s;
+}
+.del-b:hover { color: var(--red); }
+
+.cart-foot {
+  padding: 1.2rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.cart-total-row {
+  display: -webkit-flex; display: flex;
+  -webkit-justify-content: space-between; justify-content: space-between;
+  -webkit-align-items: center; align-items: center;
+  margin-bottom: 1rem;
+}
+.cart-total-label { font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; font-size: 0.95rem; color: var(--gray); }
+.cart-total-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; }
+.checkout-b {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; padding: 14px;
+  background: var(--red); color: var(--white);
+  border: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem; letter-spacing: 3px;
+  cursor: pointer; border-radius: 2px;
+  margin-bottom: 10px;
+  -webkit-transition: opacity 0.2s; transition: opacity 0.2s;
+}
+.checkout-b:hover { opacity: 0.85; }
+
+/* ═══════════════════════════════════════════
+   FORMULARIO PEDIDO
+═══════════════════════════════════════════ */
+.order-overlay {
+  position: fixed; top:0; right:0; bottom:0; left:0;
+  background: rgba(0,0,0,0.85);
+  z-index: 4000;
+  display: -webkit-flex; display: flex;
+  -webkit-align-items: center; align-items: center;
+  -webkit-justify-content: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  -webkit-transition: opacity 0.3s; transition: opacity 0.3s;
+}
+.order-overlay.open { opacity: 1; pointer-events: all; }
+.order-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  width: 92%; max-width: 480px;
+  padding: 2rem;
+  position: relative;
+  -webkit-transform: translateY(30px); transform: translateY(30px);
+  -webkit-transition: -webkit-transform 0.3s; transition: transform 0.3s;
+  max-height: 90vh; overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+}
+.order-overlay.open .order-box { -webkit-transform: translateY(0); transform: translateY(0); }
+.order-close {
+  -webkit-appearance: none; appearance: none;
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; color: var(--white);
+  font-size: 1.5rem; cursor: pointer; line-height: 1;
+}
+.order-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 3px; margin-bottom: 0.3rem; }
+.order-sub { color: var(--gray); font-size: 13px; margin-bottom: 1.5rem; line-height: 1.5; }
+.order-summary {
+  background: var(--card);
+  border-left: 3px solid var(--red);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.order-summary-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; font-weight: 600; }
+.order-item-row { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; font-size: 13px; padding: 3px 0; }
+.order-total-row { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; font-size: 15px; font-weight: 700; padding-top: 8px; margin-top: 8px; border-top: 1px solid var(--border); }
+.fgroup { margin-bottom: 1.2rem; }
+.fgroup label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; color: var(--gray); }
+.fgroup input, .fgroup textarea {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif; font-size: 14px;
+  outline: none; resize: none; border-radius: 2px;
+  -webkit-transition: border-color 0.2s; transition: border-color 0.2s;
+}
+.fgroup input:focus, .fgroup textarea:focus { border-color: var(--white); }
+.fgroup input.err, .fgroup textarea.err { border-color: var(--red); }
+.ferr { font-size: 11px; color: var(--red); margin-top: 4px; display: none; }
+.ferr.show { display: block; }
+.wa-btn {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; padding: 14px;
+  background: #25D366; color: var(--white);
+  border: none; border-radius: 2px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem; letter-spacing: 3px;
+  cursor: pointer; margin-top: 0.5rem;
+  -webkit-transition: opacity 0.2s; transition: opacity 0.2s;
+}
+.wa-btn:hover { opacity: 0.85; }
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 1.5rem; left: 50%;
+  -webkit-transform: translateX(-50%) translateY(80px);
+  transform: translateX(-50%) translateY(80px);
+  background: var(--white); color: var(--bg);
+  padding: 10px 22px;
+  font-size: 13px; font-weight: 600;
+  border-radius: 100px;
+  z-index: 9000;
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.toast.show {
+  -webkit-transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .hero { padding: 2.5rem 1.2rem; }
+  .hero-title { font-size: 3.5rem; }
+  .hero-deco { display: none; }
+  .shop { padding: 2rem 1rem 4rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  nav { padding: 0 1rem; }
+  .gbtn { padding: 5px 10px; font-size: 0.9rem; }
+}
+@media (max-width: 380px) {
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">🔥 Envío gratis en pedidos mayores — Rebajas hasta el 50%</div>
+
+<nav>
+  <a class="logo" href="#">CHULO <span>SHOP</span></a>
+  <div class="gender-btns">
+    <button class="gbtn active" onclick="setGender('men',this)">Hombre</button>
+    <button class="gbtn women" onclick="setGender('women',this)">Mujer</button>
+  </div>
+  <button class="cart-btn" onclick="toggleCart()">
+    🛒 Carrito <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-text">
+    <span class="hero-tag">Colección 2026</span>
+    <h1 class="hero-title">VÍSTETE<br>PARA <em>BRILLAR</em></h1>
+    <p class="hero-sub">Streetwear, moda casual y prendas premium a precios que no te detienen.</p>
+    <button class="hero-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Ver Catálogo</button>
+  </div>
+  <div class="hero-deco" id="heroDeco">CHULO</div>
+</section>
+
+<div class="cats">
+  <button class="ctab active" onclick="setCat('all',this)">Todo</button>
+  <button class="ctab" onclick="setCat('tshirts',this)">Camisetas</button>
+  <button class="ctab" onclick="setCat('pants',this)">Pantalones</button>
+  <button class="ctab" onclick="setCat('pullovers',this)">Suéteres</button>
+  <button class="ctab" onclick="setCat('shoes',this)">Zapatos</button>
+  <button class="ctab" onclick="setCat('hats',this)">Gorras</button>
+  <button class="ctab" onclick="setCat('garments',this)">Prendas</button>
+</div>
+
+<section class="shop" id="shop">
+  <div class="shop-header">
+    <h2 class="shop-title" id="shopTitle">COLECCIÓN HOMBRE</h2>
+    <span class="shop-count" id="shopCount"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- CARRITO -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <span class="cart-title">Tu Carrito</span>
+    <button class="cart-x" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-val" id="cartTotal">$0</span>
+    </div>
+    <button class="checkout-b" onclick="openOrder()">Proceder al Pago</button>
+  </div>
+</aside>
+
+<!-- FORMULARIO -->
+<div class="order-overlay" id="orderOverlay">
+  <div class="order-box">
+    <button class="order-close" onclick="closeOrder()">✕</button>
+    <h2 class="order-title">Confirmar Pedido</h2>
+    <p class="order-sub">Completa tus datos y te contactamos por WhatsApp 🚚</p>
+    <div class="order-summary">
+      <div class="order-summary-title">📦 Resumen</div>
+      <div id="orderItems"></div>
+      <div class="order-total-row"><span>Total</span><span id="orderTotal">$0</span></div>
+    </div>
+    <div class="fgroup">
+      <label>👤 Nombre completo *</label>
+      <input type="text" id="fName" placeholder="Juan García" maxlength="80">
+      <div class="ferr" id="fNameErr">⚠ Ingresa tu nombre</div>
+    </div>
+    <div class="fgroup">
+      <label>📞 Teléfono *</label>
+      <input type="tel" id="fPhone" placeholder="55512345" maxlength="20">
+      <div class="ferr" id="fPhoneErr">⚠ Ingresa tu teléfono</div>
+    </div>
+    <div class="fgroup">
+      <label>🏠 Dirección *</label>
+      <textarea id="fAddr" rows="3" placeholder="Calle, número, municipio..."></textarea>
+      <div class="ferr" id="fAddrErr">⚠ Ingresa tu dirección</div>
+    </div>
+    <div class="fgroup">
+      <label>📝 Nota (opcional)</label>
+      <textarea id="fNote" rows="2" placeholder="Talla, color, referencia..."></textarea>
+    </div>
+    <button class="wa-btn" onclick="sendOrder()">💬 Enviar por WhatsApp</button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <div class="lb-head">
+    <span class="lb-name" id="lbName"></span>
+    <button class="lb-close" onclick="closeLb()">✕</button>
+  </div>
+  <div class="lb-body" id="lbBody">
+    <button class="lb-arrow prev" id="lbPrev" onclick="lbShift(-1)">&#8592;</button>
+    <div id="lbContent"></div>
+    <button class="lb-arrow next" id="lbNext" onclick="lbShift(1)">&#8594;</button>
+  </div>
+  <div class="lb-foot">
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+// PRODUCTOS — pon tus fotos en images/
+// Ejemplo: images:['images/camisa1.jpg']
+// También puedes usar URLs: images:['https://...']
+// Si no tienes foto aún, usa un emoji: images:['👕']
+// ══════════════════════════════════════════════
+const DB = {
+  men: [
+    { id:'m1',  name:'Vaquero Pantalon',                  brand:'CHULO', price:13000, old:null,   cat:'tshirts',   img:['images/vaquero.jpg'],  badge:'sale', disc:'' },
+    { id:'m2',  name:'Mono Deportivo',                    brand:'CHULO', price:8000,  old:null,   cat:'pants',     img:['👖'],  badge:'new',  disc:'' },
+    { id:'m3',  name:'Pantalón de Mezclilla',              brand:'CHULO', price:15000, old:null,   cat:'pants',     img:['👖'],  badge:'hot',  disc:'-13%' },
+    { id:'m4',  name:'Adidas Campus',                     brand:'CHULO', price:20000, old:null,   cat:'shoes',     img:['👟'],  badge:'sale', disc:'-10%' },
+    { id:'m5',  name:'Pantalón Cargo Pierna Ancha',        brand:'CHULO', price:12000, old:null,   cat:'pants',     img:['👖'],  badge:'new',  disc:'' },
+    { id:'m6',  name:'Jeans Denim Clásico',                brand:'CHULO', price:1600,  old:null,   cat:'pullovers', img:['🧥'],  badge:'hot',  disc:'' },
+    { id:'m7',  name:'Short Kingpin Perlado',              brand:'CHULO', price:14000, old:null,   cat:'pants',     img:['🩳'],  badge:'sale', disc:'' },
+    { id:'m8',  name:'Pullover Media Cremallera',          brand:'CHULO', price:1500,  old:null,   cat:'pullovers', img:['👔'],  badge:'new',  disc:'' },
+    { id:'m9',  name:'Pantalón Vaquero',                   brand:'CHULO', price:1700,  old:3000,   cat:'pants',     img:['👖'],  badge:null,   disc:'' },
+    { id:'m10', name:'Zapatillas Low-Top',                 brand:'CHULO', price:1800,  old:3200,   cat:'shoes',     img:['👟'],  badge:'sale', disc:'' },
+    { id:'m11', name:'Botas Plataforma',                   brand:'CHULO', price:2400,  old:null,   cat:'shoes',     img:['👞'],  badge:'new',  disc:'' },
+    { id:'m12', name:'Alpargatas de Lona',                 brand:'CHULO', price:1000,  old:1600,   cat:'shoes',     img:['🩴'],  badge:'hot',  disc:'-37%' },
+    { id:'m13', name:'Gorra Bordada',                      brand:'CHULO', price:400,   old:800,    cat:'hats',      img:['🧢'],  badge:'sale', disc:'-50%' },
+    { id:'m14', name:'Sombrero Cubo de Lana',              brand:'CHULO', price:600,   old:null,   cat:'hats',      img:['🎩'],  badge:'new',  disc:'' },
+    { id:'m15', name:'Snapback Vintage',                   brand:'CHULO', price:500,   old:1000,   cat:'hats',      img:['🧢'],  badge:null,   disc:'' },
+    { id:'m16', name:'Gabardina Trench',                   brand:'CHULO', price:2800,  old:5200,   cat:'garments',  img:['🧥'],  badge:'sale', disc:'-46%' },
+    { id:'m17', name:'Chaqueta de Mezclilla',              brand:'CHULO', price:2000,  old:null,   cat:'garments',  img:['🧥'],  badge:'new',  disc:'' },
+    { id:'m18', name:'Blazer Sport',                       brand:'CHULO', price:3200,  old:5200,   cat:'garments',  img:['🥼'],  badge:'hot',  disc:'-38%' },
+  ],
+  women: [
+    { id:'w1',  name:'Camiseta Crop Acanalada',           brand:'CHULO', price:500,  old:900,   cat:'tshirts',   img:['https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80'], badge:'sale', disc:'-45%' },
+    { id:'w2',  name:'Camiseta Estampado Floral',         brand:'CHULO', price:650,  old:null,  cat:'tshirts',   img:['https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&q=80'], badge:'new',  disc:'' },
+    { id:'w3',  name:'Camiseta Tie-Dye Oversize',         brand:'CHULO', price:750,  old:1300,  cat:'tshirts',   img:['https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&q=80'], badge:'hot',  disc:'-42%' },
+    { id:'w4',  name:'Pantalón Tiro Alto Acampanado',     brand:'CHULO', price:1300, old:2200,  cat:'pants',     img:['https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80'], badge:'sale', disc:'-41%' },
+    { id:'w5',  name:'Pantalón Lino Pierna Ancha',        brand:'CHULO', price:1500, old:null,  cat:'pants',     img:['https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?w=600&q=80'], badge:'new',  disc:'' },
+    { id:'w6',  name:'Jeans Skinny Rotos',                brand:'CHULO', price:1400, old:2300,  cat:'pants',     img:['https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80'], badge:null,   disc:'' },
+    { id:'w7',  name:'Pullover Hombro Descubierto',       brand:'CHULO', price:1100, old:2000,  cat:'pullovers', img:['https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80'], badge:'sale', disc:'-45%' },
+    { id:'w8',  name:'Pullover Crop de Punto',            brand:'CHULO', price:1400, old:null,  cat:'pullovers', img:['https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80'], badge:'new',  disc:'' },
+    { id:'w9',  name:'Suéter Oversize Trenzado',          brand:'CHULO', price:1800, old:3000,  cat:'pullovers', img:['https://images.unsplash.com/photo-1583846783214-7229a91b20ed?w=600&q=80'], badge:null,   disc:'' },
+    { id:'w10', name:'Botines de Tacón',                  brand:'CHULO', price:2200, old:3600,  cat:'shoes',     img:['https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80'], badge:'sale', disc:'-39%' },
+    { id:'w11', name:'Zapatillas con Plataforma',         brand:'CHULO', price:2000, old:null,  cat:'shoes',     img:['https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80'], badge:'new',  disc:'' },
+    { id:'w12', name:'Sandalias con Tiras',               brand:'CHULO', price:1200, old:2000,  cat:'shoes',     img:['https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600&q=80'], badge:'hot',  disc:'-40%' },
+    { id:'w13', name:'Sombrero con Lazo Satinado',        brand:'CHULO', price:500,  old:900,   cat:'hats',      img:['https://images.unsplash.com/photo-1582791694770-cbdc9dda338f?w=600&q=80'], badge:'sale', disc:'-44%' },
+    { id:'w14', name:'Sombrero de Sol de Ganchillo',      brand:'CHULO', price:700,  old:null,  cat:'hats',      img:['https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?w=600&q=80'], badge:'new',  disc:'' },
+    { id:'w15', name:'Boina de Lana',                     brand:'CHULO', price:550,  old:1000,  cat:'hats',      img:['https://images.unsplash.com/photo-1510598155-17c9571c2b95?w=600&q=80'], badge:null,   disc:'' },
+    { id:'w16', name:'Vestido Midi Floral',               brand:'CHULO', price:1800, old:3200,  cat:'garments',  img:['https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80'], badge:'sale', disc:'-44%' },
+    { id:'w17', name:'Chaqueta Cuero Sintético',          brand:'CHULO', price:2400, old:null,  cat:'garments',  img:['https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80'], badge:'new',  disc:'' },
+    { id:'w18', name:'Blazer Entallado',                  brand:'CHULO', price:2800, old:4400,  cat:'garments',  img:['https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=600&q=80'], badge:'hot',  disc:'-36%' },
+  ]
+};
+
+// ── estado ──
+let gender = 'men', cat = 'all', cart = {}, wish = new Set();
+
+// ── utilidades ──
+const isUrl = s => s && (s.startsWith('http') || s.startsWith('/') || s.startsWith('images/'));
+const fmt   = n => '$' + Math.round(n).toLocaleString('es-CU');
+const find  = id => DB.men.find(x=>x.id===id) || DB.women.find(x=>x.id===id);
+
+// ── render grid ──
+function render() {
+  const list = DB[gender].filter(p => cat === 'all' || p.cat === cat);
+  document.getElementById('shopTitle').textContent = `COLECCIÓN ${gender==='men'?'HOMBRE':'MUJER'}`;
+  document.getElementById('shopCount').textContent = `${list.length} artículos`;
+  document.getElementById('heroDeco').textContent  = gender==='men' ? 'CHULO' : 'CHULA';
+
+  document.getElementById('grid').innerHTML = list.map(p => {
+    const src  = p.img[0];
+    const isImg = isUrl(src);
+    const inCart = cart[p.id] ? cart[p.id].qty : 0;
+    const inWish = wish.has(p.id);
+    const badgeMap = { sale:'OFERTA', new:'NUEVO', hot:'TOP' };
+
+    return `<div class="pcard" onclick="openLb('${p.id}')">
+      ${p.badge ? `<span class="pbadge pbadge-${p.badge}">${p.disc ? p.disc+' DESC' : badgeMap[p.badge]}</span>` : ''}
+      <button class="pwish ${inWish?'on':''}" onclick="toggleWish('${p.id}',this,event)">${inWish?'❤️':'🤍'}</button>
+      <div class="pimg-wrap">
+        <div class="pimg-inner">
+          ${isImg ? `<img src="${src}" alt="${p.name}" loading="lazy">` : src}
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pbrand">${p.brand}</div>
+        <div class="pname">${p.name}</div>
+        <div class="pprice-row">
+          <span class="pprice">${fmt(p.price)}</span>
+          ${p.old ? `<span class="pprice-old">${fmt(p.old)}</span>` : ''}
+          ${p.disc ? `<span class="pdiscount">${p.disc}</span>` : ''}
+        </div>
+        <button class="padd ${inCart?'added':''}" onclick="addCart('${p.id}',event)">
+          ${inCart ? `✓ En carrito (${inCart})` : '+ Agregar'}
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── género / categoría ──
+function setGender(g, btn) {
+  gender = g;
+  document.querySelectorAll('.gbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function setCat(c, btn) {
+  cat = c;
+  document.querySelectorAll('.ctab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// ── carrito ──
+function addCart(id, e) {
+  e.stopPropagation();
+  const p = find(id); if (!p) return;
+  cart[id] ? cart[id].qty++ : (cart[id] = {...p, qty:1});
+  updateCart(); render();
+  toast(`🛒 ${p.name} agregado`);
+}
+function updateQty(id, d) {
+  if (!cart[id]) return;
+  cart[id].qty += d;
+  if (cart[id].qty <= 0) delete cart[id];
+  updateCart(); render();
+}
+function delItem(id) { delete cart[id]; updateCart(); render(); }
+function toggleCart() {
+  document.getElementById('cartPanel').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+function updateCart() {
+  const items = Object.values(cart);
+  const total = items.reduce((s,i) => s + i.price * i.qty, 0);
+  const count = items.reduce((s,i) => s + i.qty, 0);
+  document.getElementById('cartBadge').textContent = count;
+  document.getElementById('cartTotal').textContent = fmt(total);
+  const box = document.getElementById('cartItems');
+  if (!items.length) {
+    box.innerHTML = `<div class="cart-empty-msg"><div class="big">🛍️</div><p>Tu carrito está vacío</p></div>`;
+    return;
+  }
+  box.innerHTML = items.map(i => {
+    const s = i.img[0];
+    const thumb = isUrl(s) ? `<img src="${s}" alt="${i.name}">` : s;
+    return `<div class="citem">
+      <div class="citem-img">${thumb}</div>
+      <div class="citem-info">
+        <div class="citem-name">${i.name}</div>
+        <div class="citem-brand">${i.brand}</div>
+        <div class="citem-price">${fmt(i.price * i.qty)}</div>
+        <div class="citem-controls">
+          <button class="qty-b" onclick="updateQty('${i.id}',-1)">−</button>
+          <span class="qty-n">${i.qty}</span>
+          <button class="qty-b" onclick="updateQty('${i.id}',1)">+</button>
+          <button class="del-b" onclick="delItem('${i.id}')">🗑</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── favoritos ──
+function toggleWish(id, btn, e) {
+  e.stopPropagation();
+  if (wish.has(id)) { wish.delete(id); btn.textContent='🤍'; btn.classList.remove('on'); }
+  else { wish.add(id); btn.textContent='❤️'; btn.classList.add('on'); toast('❤️ Guardado en favoritos'); }
+}
+
+// ── lightbox ──
+let lbProd = null, lbIdx = 0;
+function openLb(id) {
+  lbProd = find(id); if (!lbProd) return;
+  lbIdx = 0;
+  document.getElementById('lbName').textContent = lbProd.name;
+  updateLb();
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() { document.getElementById('lb').classList.remove('open'); document.body.style.overflow = ''; }
+function lbShift(d) { lbIdx = (lbIdx + d + lbProd.img.length) % lbProd.img.length; updateLb(); }
+function updateLb() {
+  const src = lbProd.img[lbIdx];
+  const content = isUrl(src)
+    ? `<img src="${src}" alt="${lbProd.name}">`
+    : `<div class="lb-emoji">${src}</div>`;
+  document.getElementById('lbContent').innerHTML = content;
+  document.getElementById('lbCounter').textContent = lbProd.img.length > 1 ? `${lbIdx+1} / ${lbProd.img.length}` : '';
+  document.getElementById('lbPrev').style.display = lbProd.img.length > 1 ? 'flex' : 'none';
+  document.getElementById('lbNext').style.display = lbProd.img.length > 1 ? 'flex' : 'none';
+}
+document.getElementById('lb').addEventListener('click', function(e) {
+  if (e.target === this || e.target === document.getElementById('lbBody')) closeLb();
+});
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lb').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbShift(1);
+  else if (e.key === 'ArrowLeft') lbShift(-1);
+  else if (e.key === 'Escape') closeLb();
+});
+
+// ── formulario ──
+function openOrder() {
+  if (!Object.keys(cart).length) { toast('⚠️ El carrito está vacío'); return; }
+  const items = Object.values(cart);
+  const total = items.reduce((s,i) => s + i.price*i.qty, 0);
+  document.getElementById('orderItems').innerHTML = items.map(i =>
+    `<div class="order-item-row"><span>${i.name} ×${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`
+  ).join('');
+  document.getElementById('orderTotal').textContent = fmt(total);
+  ['fName','fPhone','fAddr','fNote'].forEach(id => {
+    document.getElementById(id).value = '';
+    document.getElementById(id).classList.remove('err');
+  });
+  ['fNameErr','fPhoneErr','fAddrErr'].forEach(id => document.getElementById(id).classList.remove('show'));
+  document.getElementById('orderOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeOrder() {
+  document.getElementById('orderOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('orderOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeOrder();
+});
+function sendOrder() {
+  const name  = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const addr  = document.getElementById('fAddr').value.trim();
+  const note  = document.getElementById('fNote').value.trim();
+  let ok = true;
+  const check = (val, field, err) => {
+    if (!val) { document.getElementById(field).classList.add('err'); document.getElementById(err).classList.add('show'); ok = false; }
+    else { document.getElementById(field).classList.remove('err'); document.getElementById(err).classList.remove('show'); }
+  };
+  check(name,  'fName',  'fNameErr');
+  check(phone, 'fPhone', 'fPhoneErr');
+  check(addr,  'fAddr',  'fAddrErr');
+  if (!ok) { toast('⚠️ Completa los campos obligatorios'); return; }
+  const items = Object.values(cart);
+  const total = items.reduce((s,i) => s + i.price*i.qty, 0);
+  const msg =
+    `🛍️ *NUEVO PEDIDO — CHULO SHOP*\n` +
+    `━━━━━━━━━━━━━━━━━━\n` +
+    `👤 *Nombre:* ${name}\n📞 *Tel:* ${phone}\n🏠 *Dir:* ${addr}\n` +
+    (note ? `📝 *Nota:* ${note}\n` : '') +
+    `━━━━━━━━━━━━━━━━━━\n` +
+    items.map(i => `• ${i.name} ×${i.qty} — ${fmt(i.price*i.qty)}`).join('\n') +
+    `\n━━━━━━━━━━━━━━━━━━\n💰 *TOTAL: ${fmt(total)}*\n` +
+    `📅 ${new Date().toLocaleString('es-CU')}\n\n¡Hola! Quiero confirmar este pedido 😊`;
+  window.open(`https://wa.me/5355562204?text=${encodeURIComponent(msg)}`, '_blank');
+  toast('✅ Abriendo WhatsApp...');
+  closeOrder(); toggleCart();
+  cart = {}; updateCart(); render();
+}
+
+// ── toast ──
+let toastT;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+// ── init ──
+updateCart();
+render();
+</script>
+</body>
+</html>
