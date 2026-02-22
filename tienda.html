@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CHULO SHOP — Moda Urbana</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root,[data-theme="light"]{--bg:#f5f4f0;--surface:#fff;--card:#fff;--border:#e0ddd8;--text:#0d0d0d;--text2:#555;--gray:#999;--red:#e63329;--gold:#c8a84b;--nav-h:60px;--hero-side:#f0ede8;}
+[data-theme="dark"]{--bg:#0d0d0d;--surface:#161616;--card:#1c1c1c;--border:#2a2a2a;--text:#f5f5f5;--text2:#aaa;--gray:#666;--hero-side:#141414;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-text-size-adjust:100%;transition:background .4s,color .4s;}
+
+/* TOP BAR */
+.topbar{background:var(--red);color:#fff;text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:7px 1rem;font-weight:600;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:var(--surface);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;padding:0 1.5rem;gap:.6rem;transition:background .4s,border-color .4s;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:5px;color:var(--text);text-decoration:none;margin-right:auto;}
+.logo span{color:var(--red);}
+.gender-btns{display:flex;gap:4px;}
+.gbtn{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;padding:6px 16px;border:1px solid var(--border);background:transparent;color:var(--gray);cursor:pointer;border-radius:2px;transition:all .2s;}
+.gbtn:hover{border-color:var(--text);color:var(--text);}
+.gbtn.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+.gbtn.women.active{background:var(--red);border-color:var(--red);color:#fff;}
+.mode-btn{background:var(--border);border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s;}
+.mode-btn:hover{transform:rotate(20deg);}
+.wish-nav-btn{background:transparent;border:1px solid var(--border);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;position:relative;}
+.wish-nav-btn:hover{border-color:var(--red);}
+.wish-nav-count{position:absolute;top:-5px;right:-5px;background:var(--red);color:#fff;border-radius:50%;width:16px;height:16px;font-size:9px;font-weight:700;font-family:'Outfit',sans-serif;display:none;align-items:center;justify-content:center;}
+.wish-nav-count.show{display:flex;}
+.cart-btn{background:var(--red);color:#fff;border:none;padding:8px 16px;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;cursor:pointer;border-radius:2px;display:flex;align-items:center;gap:8px;transition:opacity .2s;}
+.cart-btn:hover{opacity:.85;}
+.cart-badge{background:#fff;color:var(--red);border-radius:50%;width:18px;height:18px;font-size:10px;font-family:'Outfit',sans-serif;font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+/* HERO */
+.hero{background:var(--surface);display:flex;min-height:460px;overflow:hidden;border-bottom:1px solid var(--border);}
+.hero-left{flex:1 1 50%;min-width:0;padding:5rem 3rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.hero-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:1rem;display:block;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:.9;margin-bottom:1.2rem;}
+.hero-title em{color:var(--red);font-style:normal;}
+.hero-sub{color:var(--text2);font-size:15px;line-height:1.7;margin-bottom:2rem;max-width:380px;}
+.hero-cta{display:inline-block;background:var(--red);color:#fff;padding:14px 36px;font-family:'Bebas Neue',sans-serif;letter-spacing:3px;font-size:1.1rem;border:none;cursor:pointer;border-radius:2px;align-self:flex-start;transition:opacity .2s;}
+.hero-cta:hover{opacity:.85;}
+.hero-right{flex:1 1 50%;background:var(--hero-side);position:relative;overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;}
+.hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(230,51,41,.09) 0%,transparent 65%);pointer-events:none;}
+.hero-deco-text{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:9rem;letter-spacing:-2px;color:var(--text);opacity:.04;pointer-events:none;user-select:none;white-space:nowrap;}
+.sc-card{position:relative;z-index:2;width:54%;max-width:230px;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,.14),0 4px 16px rgba(0,0,0,.08);opacity:0;transform:translateY(36px) scale(.94);transition:opacity .65s ease,transform .65s ease;}
+.sc-card.in{opacity:1;transform:none;}
+.sc-card.out{opacity:0;transform:translateY(-28px) scale(.94);}
+.sc-img-wrap{width:100%;aspect-ratio:5/6;position:relative;background:var(--hero-side);}
+.sc-img-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;}
+.sc-img-inner img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;}
+.sc-badge{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px;}
+.sc-info{padding:13px 14px 15px;}
+.sc-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sc-price{font-size:15px;font-weight:700;color:var(--red);}
+.sc-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:3;}
+.sc-dot{height:6px;border-radius:3px;cursor:pointer;transition:all .35s;width:6px;background:rgba(0,0,0,.18);}
+[data-theme="dark"] .sc-dot{background:rgba(255,255,255,.18);}
+.sc-dot.on{width:22px;background:var(--red);}
+
+/* CATEGORÍAS */
+.cats{background:var(--surface);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 1.5rem;position:sticky;top:var(--nav-h);z-index:900;}
+.cats::-webkit-scrollbar{display:none;}
+.ctab{background:transparent;border:none;border-bottom:2px solid transparent;color:var(--gray);font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:16px 20px;white-space:nowrap;cursor:pointer;transition:all .2s;}
+.ctab:hover{color:var(--text);}
+.ctab.active{color:var(--text);border-bottom-color:var(--red);font-weight:600;}
+
+/* SHOP */
+.shop{padding:2.5rem 1.5rem 5rem;max-width:1400px;margin:0 auto;}
+.shop-header{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+.shop-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;}
+.shop-count{color:var(--gray);font-size:13px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+
+/* PRODUCT CARD */
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:8px;position:relative;cursor:pointer;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.10);}
+[data-theme="dark"] .pcard:hover{box-shadow:0 14px 36px rgba(0,0,0,.4);}
+.pimg-wrap{position:relative;width:100%;aspect-ratio:3/4;background:var(--hero-side);overflow:hidden;border-radius:7px 7px 0 0;}
+.pimg-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.pimg-inner img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;}
+.pbadge{position:absolute;top:10px;left:10px;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:2px;z-index:2;}
+.pbadge-sale{background:var(--red);color:#fff;}
+.pbadge-new{background:var(--text);color:var(--bg);}
+.pbadge-hot{background:var(--gold);color:#111;}
+.pwish{position:absolute;top:10px;right:10px;z-index:2;background:rgba(0,0,0,.38);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .2s;backdrop-filter:blur(6px);}
+.pwish:hover{background:rgba(0,0,0,.65);}
+.pinfo{padding:12px 12px 14px;border-top:1px solid var(--border);}
+.pbrand{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:3px;}
+.pname{font-size:13px;font-weight:600;margin-bottom:6px;line-height:1.3;}
+.pprice-row{display:flex;align-items:center;gap:7px;margin-bottom:10px;}
+.pprice{font-size:15px;font-weight:700;}
+.pprice-old{font-size:11px;color:var(--gray);text-decoration:line-through;}
+.pdiscount{font-size:10px;color:var(--red);font-weight:700;}
+
+/* ─── BOTÓN TARJETA: Añadir al Carrito / Ver Carrito ─── */
+.pcard-btn{
+  width:100%; padding:10px;
+  border:2px solid var(--text);
+  background:transparent; color:var(--text);
+  font-family:'Bebas Neue',sans-serif;
+  letter-spacing:2px; font-size:.9rem;
+  cursor:pointer; border-radius:5px;
+  transition:all .2s; text-align:center;
+}
+.pcard-btn:hover{ background:var(--text); color:var(--bg); }
+/* Estado: ya tiene items en carrito */
+.pcard-btn.in-cart{
+  background:var(--red); color:#fff;
+  border-color:var(--red);
+}
+.pcard-btn.in-cart:hover{ opacity:.88; background:var(--red); color:#fff; }
+
+/* ══════════════════════════════════════════
+   MODAL DETALLE DEL PRODUCTO
+══════════════════════════════════════════ */
+.pd-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:3500;
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+@media(min-width:640px){.pd-overlay{align-items:center;}}
+.pd-overlay.open{opacity:1;pointer-events:all;}
+
+.pd-box{
+  background:var(--surface);
+  width:100%;max-width:720px;
+  max-height:92vh;
+  border-radius:20px 20px 0 0;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transform:translateY(60px);
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+@media(min-width:640px){
+  .pd-box{border-radius:16px;flex-direction:row;max-height:86vh;transform:translateY(30px) scale(.97);}
+}
+.pd-overlay.open .pd-box{transform:none;}
+
+.pd-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:12px auto 0;display:block;}
+@media(min-width:640px){.pd-handle{display:none;}}
+
+.pd-close{
+  position:absolute;top:12px;right:12px;
+  background:var(--bg);border:none;
+  width:34px;height:34px;border-radius:50%;
+  cursor:pointer;font-size:1rem;z-index:10;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .2s;
+  color:var(--text);
+}
+.pd-close:hover{background:var(--red);color:#fff;transform:rotate(90deg);}
+
+.pd-img-side{
+  flex-shrink:0;
+  background:var(--hero-side);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  width:100%;height:260px;
+  position:relative;
+  cursor:zoom-in;
+}
+@media(min-width:640px){.pd-img-side{width:290px;height:auto;min-height:420px;}}
+.pd-img-side img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;transition:opacity .3s;}
+.pd-img-emoji{font-size:7rem;transition:opacity .3s;}
+.pd-img-badge{
+  position:absolute;top:12px;left:12px;
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;
+}
+.pd-img-badge.sale{background:var(--red);color:#fff;}
+.pd-img-badge.new{background:var(--text);color:var(--bg);}
+.pd-img-badge.hot{background:var(--gold);color:#111;}
+.pd-zoom-hint{
+  position:absolute;bottom:10px;right:10px;
+  background:rgba(0,0,0,.45);color:#fff;
+  font-size:10px;padding:4px 8px;border-radius:4px;
+  backdrop-filter:blur(4px);
+  pointer-events:none;letter-spacing:.5px;
+}
+
+.pd-content{
+  flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:1.4rem 1.4rem 1.2rem;
+  display:flex;flex-direction:column;
+  gap:.9rem;
+}
+.pd-brand{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gray);}
+.pd-name{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:2px;line-height:1;color:var(--text);}
+.pd-price-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.pd-price{font-size:1.5rem;font-weight:700;}
+.pd-old{font-size:1rem;color:var(--gray);text-decoration:line-through;}
+.pd-disc{font-size:12px;font-weight:700;color:var(--red);background:rgba(230,51,41,.1);padding:3px 8px;border-radius:4px;}
+.pd-desc{font-size:13px;color:var(--text2);line-height:1.7;border-left:3px solid var(--border);padding-left:10px;}
+
+.pd-sec-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:8px;display:block;}
+
+/* COLORES */
+.pd-colors{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:4px;}
+.pd-color-btn{
+  width:32px;height:32px;border-radius:50%;border:3px solid transparent;
+  cursor:pointer;transition:all .2s;
+  outline:none;position:relative;
+  box-shadow:0 2px 5px rgba(0,0,0,.25);
+}
+.pd-color-btn:hover{transform:scale(1.18);}
+.pd-color-btn.sel{
+  border-color:var(--text);
+  transform:scale(1.15);
+  box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--text);
+}
+.pd-color-name{font-size:12px;color:var(--text2);font-weight:500;min-height:18px;}
+.pd-color-warn{font-size:11px;color:var(--red);display:none;margin-top:2px;}
+.pd-color-warn.show{display:block;}
+
+/* TALLAS */
+.pd-sizes{display:flex;flex-wrap:wrap;gap:7px;}
+.pd-sz-btn{
+  padding:7px 13px;border:1.5px solid var(--border);
+  background:transparent;color:var(--text);
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;border-radius:7px;transition:all .15s;
+  min-width:42px;text-align:center;
+}
+.pd-sz-btn:hover{border-color:var(--text);}
+.pd-sz-btn.sel{background:var(--text);color:var(--bg);border-color:var(--text);}
+.pd-size-warn{font-size:11px;color:var(--red);display:none;margin-top:4px;}
+.pd-size-warn.show{display:block;}
+
+.pd-size-guide{
+  background:none;border:none;color:var(--gray);
+  font-size:11px;cursor:pointer;text-decoration:underline;
+  align-self:flex-end;
+  transition:color .2s;
+  margin-top:-4px;
+}
+.pd-size-guide:hover{color:var(--red);}
+
+/* BOTONES ACCIÓN MODAL */
+.pd-actions{display:flex;gap:8px;margin-top:auto;padding-top:.4rem;}
+
+/* ─── Botón agregar del modal ─── */
+.pd-add-btn{
+  flex:1;padding:13px 16px;
+  background:var(--red);color:#fff;border:none;
+  font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:2px;
+  cursor:pointer;border-radius:8px;
+  transition:background .3s,opacity .2s;
+}
+.pd-add-btn:hover{opacity:.88;}
+/* Estado: ver carrito */
+.pd-add-btn.in-cart{
+  background:#1a9e4a;
+}
+.pd-add-btn.in-cart:hover{opacity:.9;}
+
+.pd-wish-btn{
+  width:50px;height:50px;border:2px solid var(--border);
+  background:transparent;cursor:pointer;border-radius:8px;
+  font-size:1.25rem;display:flex;align-items:center;justify-content:center;
+  transition:all .2s;flex-shrink:0;
+}
+.pd-wish-btn:hover{border-color:var(--red);}
+.pd-wish-btn.on{border-color:var(--red);background:rgba(230,51,41,.08);}
+
+/* PANEL FAVORITOS */
+.wish-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;pointer-events:none;transition:opacity .3s;}
+.wish-overlay.open{opacity:1;pointer-events:all;}
+.wish-panel{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100vw;background:var(--surface);border-left:1px solid var(--border);z-index:2001;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.wish-panel.open{transform:none;}
+.wish-head{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.wish-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;}
+.wish-x{background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;transition:transform .2s,color .2s;}
+.wish-x:hover{transform:rotate(90deg);color:var(--red);}
+.wish-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:1rem 1.5rem;}
+.wish-empty{text-align:center;padding:4rem 1rem;color:var(--gray);}
+.wish-empty .big{font-size:3.5rem;margin-bottom:1rem;}
+.wish-empty p{font-size:14px;line-height:1.7;}
+.witem{display:flex;gap:12px;padding:1rem 0;border-bottom:1px solid var(--border);}
+.witem-img{width:64px;height:80px;background:var(--hero-side);flex-shrink:0;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.witem-img img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.witem-info{flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+.witem-name{font-size:13px;font-weight:500;line-height:1.3;margin-bottom:4px;}
+.witem-price{font-size:14px;font-weight:700;color:var(--red);}
+.witem-actions{display:flex;gap:8px;margin-top:8px;}
+.witem-add{flex:1;padding:7px 8px;border:2px solid var(--text);background:transparent;color:var(--text);font-family:'Bebas Neue',sans-serif;letter-spacing:1.5px;font-size:.82rem;cursor:pointer;border-radius:3px;transition:all .2s;}
+.witem-add:hover{background:var(--text);color:var(--bg);}
+.witem-del{width:32px;height:32px;border:1px solid var(--border);background:none;color:var(--gray);cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;flex-shrink:0;}
+.witem-del:hover{border-color:var(--red);color:var(--red);}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:6000;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s;}
+.lb.open{opacity:1;pointer-events:all;}
+.lb-head{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid #2a2a2a;flex-shrink:0;}
+.lb-name{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:3px;color:#fff;}
+.lb-close{background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;transition:color .2s;}
+.lb-close:hover{color:var(--red);}
+.lb-body{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:0;padding:1.5rem;}
+.lb-body img{max-width:100%;max-height:76vh;width:auto;height:auto;display:block;object-fit:contain;border-radius:4px;}
+.lb-emoji{font-size:10rem;}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2;}
+.lb-arrow:hover{background:var(--red);border-color:var(--red);}
+.lb-arrow.prev{left:1rem;}
+.lb-arrow.next{right:1rem;}
+.lb-foot{padding:1rem 1.5rem 1.5rem;flex-shrink:0;text-align:center;}
+.lb-counter{font-size:12px;letter-spacing:2px;color:#555;text-transform:uppercase;}
+
+/* CARRITO */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;pointer-events:none;transition:opacity .3s;}
+.cart-overlay.open{opacity:1;pointer-events:all;}
+.cart-panel{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100vw;background:var(--surface);border-left:1px solid var(--border);z-index:2001;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.cart-panel.open{transform:none;}
+.cart-head{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.cart-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;}
+.cart-x{background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;transition:transform .2s;}
+.cart-x:hover{transform:rotate(90deg);}
+.cart-items{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:1rem 1.5rem;}
+.cart-empty-msg{text-align:center;padding:4rem 1rem;color:var(--gray);}
+.cart-empty-msg .big{font-size:3rem;margin-bottom:1rem;}
+.citem{display:flex;gap:12px;padding:1rem 0;border-bottom:1px solid var(--border);}
+.citem-img{width:64px;height:80px;background:var(--hero-side);flex-shrink:0;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.citem-img img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.citem-info{flex:1;}
+.citem-name{font-size:13px;font-weight:500;margin-bottom:3px;line-height:1.3;}
+.citem-meta{font-size:11px;color:var(--red);font-weight:700;margin-bottom:3px;}
+.citem-brand{font-size:11px;color:var(--gray);margin-bottom:7px;letter-spacing:1px;text-transform:uppercase;}
+.citem-price{font-size:14px;font-weight:700;margin-bottom:8px;}
+.citem-controls{display:flex;align-items:center;gap:8px;}
+.qty-b{width:24px;height:24px;border:1px solid var(--border);background:none;color:var(--text);cursor:pointer;font-size:1rem;border-radius:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.qty-b:hover{background:var(--text);color:var(--bg);border-color:var(--text);}
+.qty-n{font-size:13px;font-weight:600;min-width:18px;text-align:center;}
+.del-b{background:none;border:none;color:var(--gray);cursor:pointer;font-size:16px;margin-left:auto;transition:color .2s;}
+.del-b:hover{color:var(--red);}
+.cart-foot{padding:1.2rem 1.5rem 1.5rem;border-top:1px solid var(--border);}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+.cart-total-label{font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:.95rem;color:var(--gray);}
+.cart-total-val{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;}
+.checkout-b{width:100%;padding:14px;background:var(--red);color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;cursor:pointer;border-radius:2px;margin-bottom:10px;transition:opacity .2s;}
+.checkout-b:hover{opacity:.85;}
+.share-cart-b{width:100%;padding:12px;background:transparent;color:var(--text);border:2px solid var(--border);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;cursor:pointer;border-radius:2px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;}
+.share-cart-b:hover{border-color:var(--text);background:var(--bg);}
+
+/* FORMULARIO */
+.order-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:4000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.order-overlay.open{opacity:1;pointer-events:all;}
+.order-box{background:var(--surface);border:1px solid var(--border);width:92%;max-width:480px;padding:2rem;position:relative;transform:translateY(30px);transition:transform .3s;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;border-radius:8px;}
+.order-overlay.open .order-box{transform:none;}
+.order-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;}
+.order-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;margin-bottom:.3rem;}
+.order-sub{color:var(--gray);font-size:13px;margin-bottom:1.5rem;line-height:1.5;}
+.order-summary{background:var(--bg);border-left:3px solid var(--red);padding:1rem;margin-bottom:1.5rem;border-radius:2px;}
+.order-summary-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:8px;font-weight:600;}
+.order-item-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;}
+.order-item-meta{font-size:11px;color:var(--red);font-weight:600;}
+.order-total-row{display:flex;justify-content:space-between;font-size:15px;font-weight:700;padding-top:8px;margin-top:8px;border-top:1px solid var(--border);}
+.fgroup{margin-bottom:1.2rem;}
+.fgroup label{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;color:var(--gray);}
+.fgroup input,.fgroup textarea{width:100%;padding:10px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;resize:none;border-radius:4px;transition:border-color .2s;}
+.fgroup input:focus,.fgroup textarea:focus{border-color:var(--text);}
+.fgroup input.err,.fgroup textarea.err{border-color:var(--red);}
+.ferr{font-size:11px;color:var(--red);margin-top:4px;display:none;}
+.ferr.show{display:block;}
+.wa-btn{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-radius:4px;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;cursor:pointer;margin-top:.5rem;transition:opacity .2s;}
+.wa-btn:hover{opacity:.85;}
+
+/* TOAST */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:var(--bg);padding:10px 22px;font-size:13px;font-weight:600;border-radius:100px;z-index:9000;transition:transform .3s cubic-bezier(.4,0,.2,1);pointer-events:none;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{flex-direction:column;min-height:auto;}
+  .hero-left{padding:2.5rem 1.2rem 2rem;flex:none;width:100%;}
+  .hero-right{flex:none;width:100%;min-height:280px;}
+  .sc-card{max-width:160px;}
+}
+@media(max-width:600px){
+  nav{padding:0 .85rem;gap:5px;}
+  .logo{font-size:1.5rem;letter-spacing:3px;}
+  .gbtn{padding:5px 10px;font-size:.82rem;letter-spacing:1px;}
+  .mode-btn,.wish-nav-btn{width:32px;height:32px;font-size:.9rem;}
+  .cart-btn{padding:7px 11px;font-size:.85rem;letter-spacing:1px;gap:5px;}
+  .cart-badge{width:16px;height:16px;font-size:9px;}
+  .hero-left{padding:2rem 1.2rem 1.5rem;}
+  .hero-title{font-size:2.8rem;}
+  .hero-sub{font-size:13px;margin-bottom:1.4rem;}
+  .hero-cta{padding:12px 26px;font-size:1rem;}
+  .cats{padding:0 .85rem;}
+  .ctab{padding:13px 14px;font-size:11px;}
+  .shop{padding:1.5rem .75rem 4rem;}
+  .shop-title{font-size:1.6rem;}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .pinfo{padding:9px 9px 11px;}
+  .pbrand{font-size:9px;}
+  .pname{font-size:12px;}
+  .pprice{font-size:14px;}
+  .pcard-btn{padding:8px;font-size:.78rem;letter-spacing:1px;}
+  .cart-panel,.wish-panel{width:100%;}
+  .order-box{padding:1.5rem;}
+}
+@media(max-width:360px){
+  .logo{font-size:1.3rem;}
+  .gbtn{padding:4px 8px;font-size:.74rem;}
+  .cart-btn{padding:6px 8px;}
+  .grid{gap:8px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">🔥 Envío gratis en pedidos mayores — Rebajas hasta el 50%</div>
+
+<nav>
+  <a class="logo" href="#">CHULO <span>SHOP</span></a>
+  <div class="gender-btns">
+    <button class="gbtn active" onclick="setGender('men',this)">Hombre</button>
+    <button class="gbtn women" onclick="setGender('women',this)">Mujer</button>
+  </div>
+  <button class="mode-btn" id="modeBtn" onclick="toggleTheme()" title="Cambiar modo">☀️</button>
+  <button class="wish-nav-btn" onclick="openWishPanel()" title="Mis favoritos">
+    ❤️<span class="wish-nav-count" id="wishNavCount">0</span>
+  </button>
+  <button class="cart-btn" onclick="toggleCart()">
+    🛒 <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Colección 2026</span>
+    <h1 class="hero-title">VÍSTETE<br>PARA <em>BRILLAR</em></h1>
+    <p class="hero-sub">Streetwear, moda casual y prendas premium a precios que no te detienen.</p>
+    <button class="hero-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Ver Catálogo</button>
+  </div>
+  <div class="hero-right" id="heroRight">
+    <div class="hero-deco-text" id="heroDeco">CHULO</div>
+    <div class="sc-card" id="scCard">
+      <div class="sc-img-wrap"><div class="sc-img-inner" id="scImgInner"></div></div>
+      <div class="sc-badge" id="scBadge"></div>
+      <div class="sc-info">
+        <div class="sc-name" id="scName"></div>
+        <div class="sc-price" id="scPrice"></div>
+      </div>
+    </div>
+    <div class="sc-dots" id="scDots"></div>
+  </div>
+</section>
+
+<div class="cats">
+  <button class="ctab active" onclick="setCat('all',this)">Todo</button>
+  <button class="ctab" onclick="setCat('tshirts',this)">Camisetas</button>
+  <button class="ctab" onclick="setCat('pants',this)">Pantalones</button>
+  <button class="ctab" onclick="setCat('pullovers',this)">Suéteres</button>
+  <button class="ctab" onclick="setCat('shoes',this)">Zapatos</button>
+  <button class="ctab" onclick="setCat('hats',this)">Gorras</button>
+  <button class="ctab" onclick="setCat('garments',this)">Accesorios</button>
+</div>
+
+<section class="shop" id="shop">
+  <div class="shop-header">
+    <h2 class="shop-title" id="shopTitle">COLECCIÓN HOMBRE</h2>
+    <span class="shop-count" id="shopCount"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- MODAL PRODUCTO -->
+<div class="pd-overlay" id="pdOverlay">
+  <div class="pd-box" id="pdBox">
+    <div class="pd-handle"></div>
+    <button class="pd-close" onclick="closePD()">✕</button>
+    <div class="pd-img-side" id="pdImgSide" onclick="openLbFromPD()">
+      <div class="pd-zoom-hint">🔍 Toca para ampliar</div>
+    </div>
+    <div class="pd-content">
+      <div>
+        <div class="pd-brand" id="pdBrand"></div>
+        <div class="pd-name"  id="pdName"></div>
+      </div>
+      <div class="pd-price-row" id="pdPriceRow"></div>
+      <p  class="pd-desc"       id="pdDesc"></p>
+      <div id="pdColorBlock">
+        <span class="pd-sec-label">🎨 Color</span>
+        <div class="pd-colors" id="pdColorRow"></div>
+        <div class="pd-color-name" id="pdColorName">Elige un color</div>
+        <div class="pd-color-warn" id="pdColorWarn">⚠ Selecciona un color</div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <span class="pd-sec-label" id="pdSizeLabel" style="margin-bottom:0;">📏 Talla</span>
+          <button class="pd-size-guide" onclick="toast('📐 Guía de tallas próximamente')">Guía de tallas ›</button>
+        </div>
+        <div class="pd-sizes" id="pdSizeRow"></div>
+        <div class="pd-size-warn" id="pdSizeWarn">⚠ Selecciona una talla</div>
+      </div>
+      <div class="pd-actions">
+        <button class="pd-add-btn" id="pdAddBtn">+ Agregar al Carrito</button>
+        <button class="pd-wish-btn" id="pdWishBtn" onclick="toggleWishPD()">🤍</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL FAVORITOS -->
+<div class="wish-overlay" id="wishOverlay" onclick="closeWishPanel()"></div>
+<aside class="wish-panel" id="wishPanel">
+  <div class="wish-head">
+    <span class="wish-title">❤️ Mis Favoritos</span>
+    <button class="wish-x" onclick="closeWishPanel()">✕</button>
+  </div>
+  <div class="wish-body" id="wishBody"></div>
+</aside>
+
+<!-- CARRITO -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <span class="cart-title">Tu Carrito</span>
+    <button class="cart-x" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-val" id="cartTotal">$0</span>
+    </div>
+    <button class="checkout-b" onclick="openOrder()">Proceder al Pago</button>
+    <button class="share-cart-b" onclick="shareCart()">📤 Compartir Carrito</button>
+  </div>
+</aside>
+
+<!-- FORMULARIO -->
+<div class="order-overlay" id="orderOverlay">
+  <div class="order-box">
+    <button class="order-close" onclick="closeOrder()">✕</button>
+    <h2 class="order-title">Confirmar Pedido</h2>
+    <p class="order-sub">Completa tus datos y te contactamos por WhatsApp 🚚</p>
+    <div class="order-summary">
+      <div class="order-summary-title">📦 Resumen</div>
+      <div id="orderItems"></div>
+      <div class="order-total-row"><span>Total</span><span id="orderTotal">$0</span></div>
+    </div>
+    <div class="fgroup">
+      <label>👤 Nombre completo *</label>
+      <input type="text" id="fName" placeholder="Juan García" maxlength="80">
+      <div class="ferr" id="fNameErr">⚠ Ingresa tu nombre</div>
+    </div>
+    <div class="fgroup">
+      <label>📞 Teléfono *</label>
+      <input type="tel" id="fPhone" placeholder="55512345" maxlength="20">
+      <div class="ferr" id="fPhoneErr">⚠ Ingresa tu teléfono</div>
+    </div>
+    <div class="fgroup">
+      <label>🏠 Dirección *</label>
+      <textarea id="fAddr" rows="3" placeholder="Calle, número, municipio..."></textarea>
+      <div class="ferr" id="fAddrErr">⚠ Ingresa tu dirección</div>
+    </div>
+    <div class="fgroup">
+      <label>📝 Nota (opcional)</label>
+      <textarea id="fNote" rows="2" placeholder="Color preferido, otro detalle..."></textarea>
+    </div>
+    <button class="wa-btn" onclick="sendOrder()">💬 Enviar por WhatsApp</button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <div class="lb-head">
+    <span class="lb-name" id="lbName"></span>
+    <button class="lb-close" onclick="closeLb()">✕</button>
+  </div>
+  <div class="lb-body" id="lbBody">
+    <button class="lb-arrow prev" id="lbPrev" onclick="lbShift(-1)">&#8592;</button>
+    <div id="lbContent"></div>
+    <button class="lb-arrow next" id="lbNext" onclick="lbShift(1)">&#8594;</button>
+  </div>
+  <div class="lb-foot"><div class="lb-counter" id="lbCounter"></div></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════ COLORES BASE ══════════ */
+const COLORS = {
+  negro:   {name:'Negro',        hex:'#1a1a1a'},
+  blanco:  {name:'Blanco',       hex:'#f0f0f0'},
+  gris:    {name:'Gris',         hex:'#888888'},
+  rojo:    {name:'Rojo',         hex:'#c0392b'},
+  azulM:   {name:'Azul Medio',   hex:'#3366cc'},
+  azulC:   {name:'Azul Claro',   hex:'#7799dd'},
+  navy:    {name:'Navy',         hex:'#1b2a4a'},
+  verde:   {name:'Verde Militar',hex:'#4a5c3a'},
+  kaki:    {name:'Kaki',         hex:'#a0956e'},
+  camel:   {name:'Camel',        hex:'#c8a06a'},
+  beige:   {name:'Beige',        hex:'#d4c4a0'},
+  marron:  {name:'Marrón',       hex:'#6b3a2a'},
+  burdeos: {name:'Burdeos',      hex:'#7a0020'},
+  rosa:    {name:'Rosa',         hex:'#f48fb1'},
+  crema:   {name:'Crema',        hex:'#f5ead0'},
+  salvia:  {name:'Verde Salvia', hex:'#7a9a7a'},
+  nude:    {name:'Nude',         hex:'#d4a88a'},
+  natural: {name:'Natural',      hex:'#d4b896'},
+};
+// Devuelve una COPIA del color para evitar mutación de objetos compartidos
+const C = k => ({...COLORS[k]});
+
+/* ══════════ PRODUCTOS ══════════ */
+const DB = {
+  men: [
+    {id:'m1', name:'Camisa Negra de Perlas',     brand:'CHULO',price:13000,old:null, cat:'tshirts',  img:['images/camisa1.jpg'],    badge:'sale',disc:'',
+     desc:'Camisa elegante con detalles de perlas. Tejido suave de alta calidad, corte moderno.',
+     colors:[C('negro'),C('blanco'),C('burdeos')]},
+    {id:'m2', name:'Mono Deportivo',              brand:'CHULO',price:8000, old:null, cat:'pants',    img:['images/mono.jpg'],       badge:'new', disc:'',
+     desc:'Mono deportivo de una pieza, cómodo y estiloso. Tela transpirable ideal para el día a día.',
+     colors:[C('negro'),C('gris'),C('navy')]},
+    {id:'m3', name:'Pantalón de Mezclilla',        brand:'CHULO',price:15000,old:null, cat:'pants',    img:['images/pantalon1.jpg'],  badge:'hot', disc:'-13%',
+     desc:'Pantalón de mezclilla corte recto con lavado a la piedra. Versátil para cualquier ocasión.',
+     colors:[C('azulM'),C('negro'),C('gris')]},
+    {id:'m4', name:'Adidas Campus',               brand:'CHULO',price:20000,old:null, cat:'shoes',    img:['images/zapat.jpg'],      badge:'sale',disc:'-10%',
+     desc:'Zapatillas icónicas Adidas Campus. Suela vulcanizada, upper en ante premium.',
+     colors:[C('blanco'),C('negro'),C('gris')]},
+    {id:'m5', name:'Pantalón Cargo Pierna Ancha',  brand:'CHULO',price:12000,old:null, cat:'pants',    img:['images/shor1.jpg'],      badge:'new', disc:'',
+     desc:'Pantalón cargo con bolsillos funcionales. Corte pierna ancha muy de moda esta temporada.',
+     colors:[C('kaki'),C('negro'),C('verde')]},
+    {id:'m6', name:'Jeans Denim Clásico',          brand:'CHULO',price:1600, old:null, cat:'pullovers',img:['images/abrigo.jpg'],     badge:'hot', disc:'',
+     desc:'Jeans denim clásico de corte recto. El básico que nunca falla.',
+     colors:[C('azulM'),C('azulC'),C('negro')]},
+    {id:'m7', name:'Short Kingpin Perlado',        brand:'CHULO',price:14000,old:null, cat:'pants',    img:['images/shorP2.jpg'],     badge:'sale',disc:'',
+     desc:'Short exclusivo con acabado perlado. Diseño urbano de edición limitada.',
+     colors:[C('negro'),C('blanco')]},
+    {id:'m8', name:'Pullover Media Cremallera',    brand:'CHULO',price:1500, old:null, cat:'pullovers',img:['images/camisalarga.jpg'],badge:'new', disc:'',
+     desc:'Pullover de punto con cremallera al cuello. Tejido cálido, silueta holgada.',
+     colors:[C('crema'),C('negro'),C('marron')]},
+    {id:'m9', name:'Pantalón Vaquero',             brand:'CHULO',price:1700, old:3000, cat:'pants',    img:['images/vaquero.jpg'],    badge:null,  disc:'',
+     desc:'Pantalón vaquero clásico con lavado especial. Ajuste cómodo para todo el día.',
+     colors:[C('azulM'),C('negro')]},
+    {id:'m10',name:'Short de mesclilla con cordon',           brand:'CHULO',price:1800, old:3200, cat:'shoes',    img:['images/shortP2.jpg'],badge:'sale',disc:'',
+     desc:'Zapatillas bajas con suela de goma antideslizante. Comodidad máxima.',
+     colors:[
+  {...C('blanco'), img:'images/shorP1.jpg'},
+  {...C('negro')},
+  {...C('gris')},],},        
+       
+   {id:'m11',name:'Botas Plataforma',             brand:'CHULO',price:2400, old:null, cat:'shoes',    img:['👞'],badge:'new', disc:'',
+     desc:'Botas con plataforma gruesa de 5 cm. Cierre lateral y puntera cuadrada.',
+     colors:[C('negro'),C('marron')]},
+    {id:'m12',name:'Alpargatas de Lona',           brand:'CHULO',price:1000, old:1600, cat:'shoes',    img:['🩴'],badge:'hot', disc:'-37%',
+     desc:'Alpargatas ligeras de lona natural. Perfectas para el verano y la playa.',
+     colors:[C('blanco'),C('navy'),C('rojo')]},
+    {id:'m13',name:'Gorra Bordada',                brand:'CHULO',price:400,  old:800,  cat:'hats',     img:['🧢'],badge:'sale',disc:'-50%',
+     desc:'Gorra de seis paneles con logo bordado. Cierre snapback regulable.',
+     colors:[C('negro'),C('blanco'),C('rojo'),C('verde')]},
+    {id:'m14',name:'Sombrero Cubo de Lana',        brand:'CHULO',price:600,  old:null, cat:'hats',     img:['🎩'],badge:'new', disc:'',
+     desc:'Bucket hat de lana de invierno. Ala ancha y estilo retro muy en tendencia.',
+     colors:[C('beige'),C('negro'),C('azulM')]},
+    {id:'m15',name:'Snapback Vintage',             brand:'CHULO',price:500,  old:1000, cat:'hats',     img:['🧢'],badge:null,  disc:'',
+     desc:'Snapback con panel plano y visera plana. Diseño vintage con parche bordado.',
+     colors:[C('negro'),C('gris'),C('blanco')]},
+    {id:'m16',name:'Gabardina Trench',             brand:'CHULO',price:2800, old:5200, cat:'garments', img:['🧥'],badge:'sale',disc:'-46%',
+     desc:'Gabardina trench clásica con cinturón. Impermeable y elegante, un básico atemporal.',
+     colors:[C('camel'),C('negro'),C('beige')]},
+    {id:'m17',name:'Chaqueta de Mezclilla',        brand:'CHULO',price:2000, old:null, cat:'garments', img:['🧥'],badge:'new', disc:'',
+     desc:'Chaqueta denim con lavado especial. Corte clásico con bolsillos frontales.',
+     colors:[C('azulM'),C('negro'),C('azulC')]},
+    {id:'m18',name:'Blazer Sport',                 brand:'CHULO',price:3200, old:5200, cat:'garments', img:['🥼'],badge:'hot', disc:'-38%',
+     desc:'Blazer de corte sport, perfecto para combinar con jeans o pantalón formal.',
+     colors:[C('negro'),C('gris'),C('navy')]},
+  ],
+  women: [
+    {id:'w1', name:'Camiseta Crop Acanalada',     brand:'CHULO',price:500, old:900,  cat:'tshirts',  img:['https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80'],badge:'sale',disc:'-45%',
+     desc:'Camiseta crop con textura acanalada. Fit ajustado y escote redondo.',
+     colors:[C('blanco'),C('negro'),C('rosa'),C('beige')]},
+    {id:'w2', name:'Camiseta Estampado Floral',   brand:'CHULO',price:650, old:null, cat:'tshirts',  img:['https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&q=80'],badge:'new', disc:'',
+     desc:'Camiseta con estampado floral tropical. Tela suave y fresca.',
+     colors:[C('blanco'),C('negro')]},
+    {id:'w3', name:'Camiseta Tie-Dye Oversize',   brand:'CHULO',price:750, old:1300, cat:'tshirts',  img:['https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&q=80'],badge:'hot', disc:'-42%',
+     desc:'Camiseta tie-dye oversize con diseño único. Cada prenda es artesanal.',
+     colors:[C('azulC'),C('rosa'),{name:'Naranja',hex:'#ee9944'}]},
+    {id:'w4', name:'Pantalón Tiro Alto',          brand:'CHULO',price:1300,old:2200, cat:'pants',    img:['https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80'],badge:'sale',disc:'-41%',
+     desc:'Pantalón de tiro alto acampanado. Tejido fluido que estiliza la figura.',
+     colors:[C('negro'),C('blanco'),C('camel')]},
+    {id:'w5', name:'Pantalón Lino Pierna Ancha',  brand:'CHULO',price:1500,old:null, cat:'pants',    img:['https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?w=600&q=80'],badge:'new', disc:'',
+     desc:'Pantalón de lino natural, pierna ancha. Transpirable y cómodo.',
+     colors:[C('crema'),C('beige'),C('salvia')]},
+    {id:'w6', name:'Jeans Skinny Rotos',          brand:'CHULO',price:1400,old:2300, cat:'pants',    img:['https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80'],badge:null,  disc:'',
+     desc:'Jeans skinny con detalles rotos en rodillas. Silueta ajustada.',
+     colors:[C('azulM'),C('negro'),C('azulC')]},
+    {id:'w7', name:'Pullover Hombro Descubierto', brand:'CHULO',price:1100,old:2000, cat:'pullovers',img:['https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80'],badge:'sale',disc:'-45%',
+     desc:'Pullover con detalle de hombro descubierto. Look romántico y moderno.',
+     colors:[C('rosa'),C('blanco'),C('negro')]},
+    {id:'w8', name:'Pullover Crop de Punto',      brand:'CHULO',price:1400,old:null, cat:'pullovers',img:['https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80'],badge:'new', disc:'',
+     desc:'Pullover crop en punto grueso. Perfecto para tardes frescas.',
+     colors:[C('crema'),C('verde'),C('negro')]},
+    {id:'w9', name:'Suéter Oversize Trenzado',    brand:'CHULO',price:1800,old:3000, cat:'pullovers',img:['https://images.unsplash.com/photo-1583846783214-7229a91b20ed?w=600&q=80'],badge:null,  disc:'',
+     desc:'Suéter oversize con trenza artesanal. Tejido grueso y abrigado.',
+     colors:[C('crema'),C('gris'),C('camel')]},
+    {id:'w10',name:'Botines de Tacón',            brand:'CHULO',price:2200,old:3600, cat:'shoes',    img:['https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80'],badge:'sale',disc:'-39%',
+     desc:'Botines con tacón de bloque de 7 cm. Cierre lateral con cremallera.',
+     colors:[C('negro'),C('marron'),C('camel')]},
+    {id:'w11',name:'Zapatillas con Plataforma',   brand:'CHULO',price:2000,old:null, cat:'shoes',    img:['https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80'],badge:'new', disc:'',
+     desc:'Zapatillas con plataforma de 4 cm. Suela chunky muy de moda.',
+     colors:[C('blanco'),C('negro'),C('beige')]},
+    {id:'w12',name:'Sandalias con Tiras',         brand:'CHULO',price:1200,old:2000, cat:'shoes',    img:['https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600&q=80'],badge:'hot', disc:'-40%',
+     desc:'Sandalias planas con tiras cruzadas. Diseño minimalista para el verano.',
+     colors:[C('nude'),C('negro'),C('blanco')]},
+    {id:'w13',name:'Sombrero con Lazo',           brand:'CHULO',price:500, old:900,  cat:'hats',     img:['https://images.unsplash.com/photo-1582791694770-cbdc9dda338f?w=600&q=80'],badge:'sale',disc:'-44%',
+     desc:'Sombrero bucket con lazo satinado. Tela suave y elegante.',
+     colors:[C('negro'),C('rosa'),C('beige')]},
+    {id:'w14',name:'Sombrero de Sol',             brand:'CHULO',price:700, old:null, cat:'hats',     img:['https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?w=600&q=80'],badge:'new', disc:'',
+     desc:'Sombrero de sol de ganchillo artesanal. Ala grande, máxima protección.',
+     colors:[C('natural'),C('blanco')]},
+    {id:'w15',name:'Boina de Lana',               brand:'CHULO',price:550, old:1000, cat:'hats',     img:['https://images.unsplash.com/photo-1510598155-17c9571c2b95?w=600&q=80'],badge:null,  disc:'',
+     desc:'Boina de lana 100% natural. Estilo parisino atemporal.',
+     colors:[C('negro'),C('rojo'),C('gris'),C('camel')]},
+    {id:'w16',name:'Vestido Midi Floral',         brand:'CHULO',price:1800,old:3200, cat:'garments', img:['https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80'],badge:'sale',disc:'-44%',
+     desc:'Vestido midi con estampado floral. Escote en V y manga larga, falda fluida.',
+     colors:[C('blanco'),C('negro'),C('azulM')]},
+    {id:'w17',name:'Chaqueta Cuero Sintético',    brand:'CHULO',price:2400,old:null, cat:'garments', img:['https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80'],badge:'new', disc:'',
+     desc:'Chaqueta de cuero sintético de alta calidad. Moto style con cremalleras metálicas.',
+     colors:[C('negro'),C('marron'),C('rojo')]},
+    {id:'w18',name:'Blazer Entallado',            brand:'CHULO',price:2800,old:4400, cat:'garments', img:['https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=600&q=80'],badge:'hot', disc:'-36%',
+     desc:'Blazer entallado de corte clásico. Perfecto para oficina o salida nocturna.',
+     colors:[C('negro'),C('blanco'),C('camel'),C('navy')]},
+  ]
+};
+
+/* TALLAS */
+const SIZES = {
+  shoes:    ['36','37','38','39','40','41','42','43','44'],
+  hats:     ['S/M','L/XL'],
+  pants:    ['XS','S','M','L','XL','XXL'],
+  tshirts:  ['XS','S','M','L','XL','XXL'],
+  pullovers:['XS','S','M','L','XL','XXL'],
+  garments: ['XS','S','M','L','XL','XXL'],
+};
+const getSizes    = cat => SIZES[cat] || ['S','M','L','XL'];
+const getSizeLabel= cat => cat==='shoes' ? '👟 Número' : '📏 Talla';
+
+/* ESTADO GLOBAL */
+let gender='men', cat='all';
+let cart={};
+let wish=new Set();
+
+// Estado del modal — siempre aislado por producto
+let pdProd=null, pdSelColor=null, pdSelSize=null;
+
+const isUrl  = s => s&&(s.startsWith('http')||s.startsWith('/')||s.startsWith('images/'));
+const fmt    = n => '$'+Math.round(n).toLocaleString('es-CU');
+const find   = id => DB.men.find(x=>x.id===id)||DB.women.find(x=>x.id===id);
+const cartKey= (id,color,size) => `${id}||${color}||${size}`;
+
+/* ══════════ TEMA ══════════ */
+function toggleTheme(){
+  const html=document.documentElement;
+  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  document.getElementById('modeBtn').textContent=next==='dark'?'🌙':'☀️';
+  try{localStorage.setItem('cs-theme',next);}catch(e){}
+}
+function initTheme(){
+  let t='light';
+  try{t=localStorage.getItem('cs-theme')||'light';}catch(e){}
+  document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('modeBtn').textContent=t==='dark'?'🌙':'☀️';
+}
+
+/* ══════════ VITRINA HERO ══════════ */
+let scItems=[],scIdx=0,scTimer=null;
+function buildScItems(){
+  const all=[...DB[gender]];
+  scItems=[...all.filter(p=>isUrl(p.img[0])),...all.filter(p=>!isUrl(p.img[0]))];
+}
+function renderDots(total,active){
+  const n=Math.min(total,8);
+  document.getElementById('scDots').innerHTML=
+    Array.from({length:n},(_,i)=>`<div class="sc-dot ${i===active%n?'on':''}"></div>`).join('');
+}
+function showScItem(idx,first){
+  const p=scItems[idx%scItems.length];
+  const card=document.getElementById('scCard');
+  if(!first){card.classList.remove('in');card.classList.add('out');}
+  const update=()=>{
+    const src=p.img[0];
+    document.getElementById('scImgInner').innerHTML=isUrl(src)
+      ?`<img src="${src}" alt="${p.name}" loading="lazy">`:src;
+    document.getElementById('scName').textContent=p.name;
+    document.getElementById('scPrice').textContent=fmt(p.price);
+    const badge=document.getElementById('scBadge');
+    if(p.badge){badge.textContent=p.disc?p.disc+' DESC':{sale:'OFERTA',new:'NUEVO',hot:'TOP'}[p.badge];badge.style.display='block';}
+    else badge.style.display='none';
+    renderDots(scItems.length,idx);
+    card.classList.remove('out');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>card.classList.add('in')));
+  };
+  if(first)update();else setTimeout(update,400);
+}
+function startShowcase(){
+  clearInterval(scTimer);buildScItems();
+  if(!scItems.length)return;
+  scIdx=0;showScItem(scIdx,true);
+  scTimer=setInterval(()=>{scIdx=(scIdx+1)%scItems.length;showScItem(scIdx,false);},3200);
+}
+
+/* ══════════ RENDER GRID ══════════ */
+function render(){
+  const list=DB[gender].filter(p=>cat==='all'||p.cat===cat);
+  document.getElementById('shopTitle').textContent=`COLECCIÓN ${gender==='men'?'HOMBRE':'MUJER'}`;
+  document.getElementById('shopCount').textContent=`${list.length} artículos`;
+  document.getElementById('heroDeco').textContent=gender==='men'?'CHULO':'CHULA';
+  const bmap={sale:'OFERTA',new:'NUEVO',hot:'TOP'};
+
+  document.getElementById('grid').innerHTML=list.map(p=>{
+    const src=p.img[0];
+    const inWish=wish.has(p.id);
+    const totalInCart=Object.keys(cart)
+      .filter(k=>k.startsWith(p.id+'||'))
+      .reduce((s,k)=>s+cart[k].qty,0);
+
+    // ── FIX 1: Botón de la tarjeta ──
+    // Sin items → "Añadir al Carrito" (abre modal)
+    // Con items → "🛒 Ver Carrito" (abre panel carrito)
+    const btnClass = totalInCart ? 'pcard-btn in-cart' : 'pcard-btn';
+    const btnText  = totalInCart ? `🛒 Ver Carrito (${totalInCart})` : '+ Añadir al Carrito';
+    const btnClick = totalInCart
+      ? `event.stopPropagation();toggleCart()`
+      : `event.stopPropagation();openPD('${p.id}')`;
+
+    return `<div class="pcard" onclick="openPD('${p.id}')">
+      ${p.badge?`<span class="pbadge pbadge-${p.badge}">${p.disc?p.disc+' DESC':bmap[p.badge]}</span>`:''}
+      <button class="pwish ${inWish?'on':''}" onclick="quickWish('${p.id}',this,event)">${inWish?'❤️':'🤍'}</button>
+      <div class="pimg-wrap"><div class="pimg-inner">
+        ${isUrl(src)?`<img src="${src}" alt="${p.name}" loading="lazy">`:src}
+      </div></div>
+      <div class="pinfo">
+        <div class="pbrand">${p.brand}</div>
+        <div class="pname">${p.name}</div>
+        <div class="pprice-row">
+          <span class="pprice">${fmt(p.price)}</span>
+          ${p.old?`<span class="pprice-old">${fmt(p.old)}</span>`:''}
+          ${p.disc?`<span class="pdiscount">${p.disc}</span>`:''}
+        </div>
+        <button class="${btnClass}" onclick="${btnClick}">${btnText}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setGender(g,btn){
+  gender=g;
+  document.querySelectorAll('.gbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();startShowcase();
+}
+function setCat(c,btn){
+  cat=c;
+  document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+/* ══════════════════════════════════════
+   MODAL PRODUCTO — FIX 2 + 3 aplicados
+══════════════════════════════════════ */
+function openPD(id){
+  const p=find(id); if(!p) return;
+
+  // ── FIX 3: pdProd recibe una copia profunda del producto ──
+  // Así los colores de este modal NO comparten referencia con otros productos
+  pdProd={ ...p, colors: p.colors ? p.colors.map(c=>({...c})) : [] };
+  pdSelColor=null;
+  pdSelSize=null;
+
+  /* Imagen */
+  const src=p.img[0];
+  const imgSide=document.getElementById('pdImgSide');
+  imgSide.innerHTML='';
+  if(isUrl(src)){
+    const img=document.createElement('img');
+    img.src=src; img.alt=p.name;
+    imgSide.appendChild(img);
+  } else {
+    const em=document.createElement('div');
+    em.className='pd-img-emoji'; em.textContent=src;
+    imgSide.appendChild(em);
+  }
+  if(p.badge){
+    const b=document.createElement('div');
+    b.className=`pd-img-badge ${p.badge}`;
+    b.textContent=p.disc?p.disc+' DESC':{sale:'OFERTA 🔥',new:'NUEVO ✨',hot:'TOP ⭐'}[p.badge];
+    imgSide.appendChild(b);
+  }
+  const hint=document.createElement('div');
+  hint.className='pd-zoom-hint'; hint.textContent='🔍 Toca para ampliar';
+  imgSide.appendChild(hint);
+
+  /* Texto */
+  document.getElementById('pdBrand').textContent=p.brand;
+  document.getElementById('pdName').textContent=p.name;
+  document.getElementById('pdDesc').textContent=p.desc||'';
+
+  /* Precio */
+  let ph=`<span class="pd-price">${fmt(p.price)}</span>`;
+  if(p.old) ph+=`<span class="pd-old">${fmt(p.old)}</span>`;
+  if(p.disc) ph+=`<span class="pd-disc">${p.disc}</span>`;
+  document.getElementById('pdPriceRow').innerHTML=ph;
+
+  /* Colores — usando la copia local de pdProd */
+  const colors=pdProd.colors;
+  const colBlock=document.getElementById('pdColorBlock');
+  colBlock.style.display=colors.length?'block':'none';
+  document.getElementById('pdColorRow').innerHTML=colors.map(c=>
+    `<button class="pd-color-btn" style="background:${c.hex}"
+      title="${c.name}" onclick="pickColor(this,'${c.name}')"></button>`
+  ).join('');
+  document.getElementById('pdColorName').textContent='Elige un color';
+  document.getElementById('pdColorWarn').classList.remove('show');
+
+  /* Tallas */
+  document.getElementById('pdSizeLabel').textContent=getSizeLabel(p.cat);
+  const sizes=getSizes(p.cat);
+  document.getElementById('pdSizeRow').innerHTML=sizes.map(sz=>
+    `<button class="pd-sz-btn" onclick="pickSize(this,'${sz}')">${sz}</button>`
+  ).join('');
+  document.getElementById('pdSizeWarn').classList.remove('show');
+
+  /* Favorito */
+  const wb=document.getElementById('pdWishBtn');
+  wb.textContent=wish.has(p.id)?'❤️':'🤍';
+  wb.classList.toggle('on',wish.has(p.id));
+
+  /* ── FIX 2: Botón del modal — siempre empieza en "Agregar" ── */
+  resetAddBtn();
+
+  document.getElementById('pdOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closePD(){
+  document.getElementById('pdOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.getElementById('pdOverlay').addEventListener('click',function(e){
+  if(e.target===this) closePD();
+});
+
+/* ── Poner el botón en estado "Agregar al Carrito" ── */
+function resetAddBtn(){
+  const ab=document.getElementById('pdAddBtn');
+  ab.textContent='+ Agregar al Carrito';
+  ab.className='pd-add-btn';
+  ab.onclick=addFromPD;
+}
+
+/* ── Poner el botón en estado "Ver Carrito" ── */
+function setCartBtn(qty){
+  const ab=document.getElementById('pdAddBtn');
+  ab.textContent=`✓ Agregado (${qty}) — Ver Carrito`;
+  ab.className='pd-add-btn in-cart';
+  ab.onclick=function(){ closePD(); toggleCart(); };
+}
+
+/* Elegir color — solo afecta a este modal, no a otros productos */
+function pickColor(btn, colorName){
+  pdSelColor=colorName;
+  // Desmarcar todos y marcar el elegido
+  document.querySelectorAll('#pdColorRow .pd-color-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  document.getElementById('pdColorName').textContent=colorName;
+  document.getElementById('pdColorWarn').classList.remove('show');
+
+  // Cambiar imagen si el color tiene imagen propia (para este producto solamente)
+  if(!pdProd) return;
+  const colorObj=pdProd.colors.find(c=>c.name===colorName);
+  const newSrc=colorObj&&colorObj.img ? colorObj.img : pdProd.img[0];
+
+  const imgSide=document.getElementById('pdImgSide');
+  const existing=imgSide.querySelector('img,.pd-img-emoji');
+  if(!existing) return;
+
+  existing.style.transition='opacity .22s';
+  existing.style.opacity='0';
+  setTimeout(()=>{
+    if(isUrl(newSrc)){
+      if(existing.tagName==='IMG'){
+        existing.src=newSrc;
+        existing.style.opacity='1';
+      } else {
+        const img=document.createElement('img');
+        img.src=newSrc; img.alt=pdProd.name;
+        img.style.cssText='width:100%;height:100%;display:block;object-fit:cover;object-position:center top;opacity:0;transition:opacity .22s;';
+        existing.replaceWith(img);
+        requestAnimationFrame(()=>{ img.style.opacity='1'; });
+      }
+    } else {
+      if(existing.tagName!=='IMG'){
+        existing.textContent=newSrc;
+        existing.style.opacity='1';
+      } else {
+        const em=document.createElement('div');
+        em.className='pd-img-emoji';
+        em.style.cssText='opacity:0;transition:opacity .22s;';
+        em.textContent=newSrc;
+        existing.replaceWith(em);
+        requestAnimationFrame(()=>{ em.style.opacity='1'; });
+      }
+    }
+    // Restaurar botón a "Agregar" cuando cambia el color
+    resetAddBtn();
+  }, 230);
+}
+
+/* Elegir talla */
+function pickSize(btn, size){
+  pdSelSize=size;
+  document.querySelectorAll('#pdSizeRow .pd-sz-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  document.getElementById('pdSizeWarn').classList.remove('show');
+  // Restaurar botón a "Agregar" cuando cambia la talla (elección diferente)
+  resetAddBtn();
+}
+
+/* Agregar al carrito desde el modal */
+function addFromPD(){
+  const p=pdProd; if(!p) return;
+  const hasColors=(p.colors&&p.colors.length>0);
+
+  if(hasColors && !pdSelColor){
+    document.getElementById('pdColorWarn').classList.add('show');
+    toast('⚠️ Elige un color'); return;
+  }
+  if(!pdSelSize){
+    document.getElementById('pdSizeWarn').classList.add('show');
+    toast('⚠️ Elige una talla'); return;
+  }
+
+  const color=hasColors?pdSelColor:'Único';
+  const ck=cartKey(p.id, color, pdSelSize);
+  if(cart[ck]) cart[ck].qty++;
+  else cart[ck]={...p, color, size:pdSelSize, qty:1};
+
+  updateCart(); render(); updateWishPanel();
+
+  // ── FIX 2: Botón del modal pasa a "Ver Carrito" ──
+  setCartBtn(cart[ck].qty);
+  toast(`🛒 ${p.name} — ${color}, ${pdSelSize}`);
+}
+
+function toggleWishPD(){
+  const p=pdProd; if(!p) return;
+  const wb=document.getElementById('pdWishBtn');
+  if(wish.has(p.id)){
+    wish.delete(p.id); wb.textContent='🤍'; wb.classList.remove('on'); toast('💔 Quitado de favoritos');
+  } else {
+    wish.add(p.id); wb.textContent='❤️'; wb.classList.add('on'); toast('❤️ Guardado en favoritos');
+  }
+  updateWishPanel(); render();
+}
+
+function openLbFromPD(){
+  if(!pdProd) return;
+  document.getElementById('lbName').textContent=pdProd.name;
+  lbProd=pdProd; lbIdx=0;
+  updateLb();
+  document.getElementById('lb').classList.add('open');
+}
+
+/* ══════════ CARRITO ══════════ */
+function updateQty(ck,d){
+  if(!cart[ck])return;
+  cart[ck].qty+=d;
+  if(cart[ck].qty<=0) delete cart[ck];
+  updateCart(); render(); updateWishPanel();
+}
+function delItem(ck){ delete cart[ck]; updateCart(); render(); updateWishPanel(); }
+function toggleCart(){
+  document.getElementById('cartPanel').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+function updateCart(){
+  const items=Object.values(cart);
+  const total=items.reduce((s,i)=>s+i.price*i.qty,0);
+  const count=items.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartBadge').textContent=count;
+  document.getElementById('cartTotal').textContent=fmt(total);
+  const box=document.getElementById('cartItems');
+  if(!items.length){
+    box.innerHTML=`<div class="cart-empty-msg"><div class="big">🛍️</div><p>Tu carrito está vacío</p></div>`;
+    return;
+  }
+  box.innerHTML=Object.entries(cart).map(([ck,i])=>{
+    const s=i.img[0];
+    return `<div class="citem">
+      <div class="citem-img">${isUrl(s)?`<img src="${s}" alt="${i.name}">`:s}</div>
+      <div class="citem-info">
+        <div class="citem-name">${i.name}</div>
+        <div class="citem-meta">🎨 ${i.color} &nbsp;·&nbsp; 📏 ${i.size}</div>
+        <div class="citem-brand">${i.brand}</div>
+        <div class="citem-price">${fmt(i.price*i.qty)}</div>
+        <div class="citem-controls">
+          <button class="qty-b" onclick="updateQty('${ck}',-1)">−</button>
+          <span class="qty-n">${i.qty}</span>
+          <button class="qty-b" onclick="updateQty('${ck}',1)">+</button>
+          <button class="del-b" onclick="delItem('${ck}')">🗑</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function shareCart(){
+  const items=Object.values(cart);
+  if(!items.length){toast('⚠️ El carrito está vacío');return;}
+  const total=items.reduce((s,i)=>s+i.price*i.qty,0);
+  const msg=`🛍️ *MI SELECCIÓN — CHULO SHOP*\n━━━━━━━━━━━━━━━━━━\n`+
+    items.map(i=>`• ${i.name}\n  🎨 ${i.color} | 📏 ${i.size} | ×${i.qty} | ${fmt(i.price*i.qty)}`).join('\n')+
+    `\n━━━━━━━━━━━━━━━━━━\n💰 *TOTAL: ${fmt(total)}*\n\n¡Mira lo que encontré en CHULO SHOP! 😍`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
+  toast('📤 Abriendo WhatsApp...');
+}
+
+/* ══════════ FAVORITOS ══════════ */
+function quickWish(id,btn,e){
+  e.stopPropagation();
+  if(wish.has(id)){wish.delete(id);btn.textContent='🤍';btn.classList.remove('on');}
+  else{wish.add(id);btn.textContent='❤️';btn.classList.add('on');toast('❤️ Guardado en favoritos');}
+  updateWishPanel();
+}
+function openWishPanel(){
+  document.getElementById('wishPanel').classList.add('open');
+  document.getElementById('wishOverlay').classList.add('open');
+}
+function closeWishPanel(){
+  document.getElementById('wishPanel').classList.remove('open');
+  document.getElementById('wishOverlay').classList.remove('open');
+}
+function updateWishPanel(){
+  const items=[...wish].map(id=>find(id)).filter(Boolean);
+  const nc=document.getElementById('wishNavCount');
+  nc.textContent=items.length;
+  nc.classList.toggle('show',items.length>0);
+  const box=document.getElementById('wishBody');
+  if(!items.length){
+    box.innerHTML=`<div class="wish-empty"><div class="big">🤍</div><p>Aún no tienes favoritos.<br>Toca el corazón en cualquier<br>producto para guardarlo aquí.</p></div>`;
+    return;
+  }
+  box.innerHTML=items.map(p=>{
+    const s=p.img[0];
+    const totalInCart=Object.keys(cart).filter(k=>k.startsWith(p.id+'||')).reduce((s,k)=>s+cart[k].qty,0);
+    return `<div class="witem">
+      <div class="witem-img">${isUrl(s)?`<img src="${s}" alt="${p.name}">`:s}</div>
+      <div class="witem-info">
+        <div>
+          <div class="witem-name">${p.name}</div>
+          <div class="witem-price">${fmt(p.price)}</div>
+        </div>
+        <div class="witem-actions">
+          <button class="witem-add" onclick="closeWishPanel();openPD('${p.id}')">
+            ${totalInCart?`✓ En carrito (${totalInCart})`:'Ver y agregar'}
+          </button>
+          <button class="witem-del" onclick="removeWish('${p.id}')">🗑</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function removeWish(id){wish.delete(id);updateWishPanel();render();toast('💔 Eliminado de favoritos');}
+
+/* ══════════ LIGHTBOX ══════════ */
+let lbProd=null,lbIdx=0;
+function closeLb(){document.getElementById('lb').classList.remove('open');}
+function lbShift(d){lbIdx=(lbIdx+d+lbProd.img.length)%lbProd.img.length;updateLb();}
+function updateLb(){
+  const src=lbProd.img[lbIdx];
+  document.getElementById('lbContent').innerHTML=isUrl(src)
+    ?`<img src="${src}" alt="${lbProd.name}">`
+    :`<div class="lb-emoji">${src}</div>`;
+  document.getElementById('lbCounter').textContent=lbProd.img.length>1?`${lbIdx+1} / ${lbProd.img.length}`:'';
+  document.getElementById('lbPrev').style.display=lbProd.img.length>1?'flex':'none';
+  document.getElementById('lbNext').style.display=lbProd.img.length>1?'flex':'none';
+}
+document.getElementById('lb').addEventListener('click',function(e){
+  if(e.target===this||e.target===document.getElementById('lbBody'))closeLb();
+});
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('lb').classList.contains('open')){
+    if(e.key==='ArrowRight')lbShift(1);
+    else if(e.key==='ArrowLeft')lbShift(-1);
+    else if(e.key==='Escape')closeLb();
+    return;
+  }
+  if(e.key==='Escape'&&document.getElementById('pdOverlay').classList.contains('open'))closePD();
+});
+
+/* ══════════ FORMULARIO ══════════ */
+function openOrder(){
+  if(!Object.keys(cart).length){toast('⚠️ El carrito está vacío');return;}
+  const items=Object.values(cart);
+  const total=items.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('orderItems').innerHTML=items.map(i=>
+    `<div class="order-item-row">
+      <span>${i.name} <span class="order-item-meta">[${i.color} · ${i.size}]</span> ×${i.qty}</span>
+      <span>${fmt(i.price*i.qty)}</span>
+    </div>`
+  ).join('');
+  document.getElementById('orderTotal').textContent=fmt(total);
+  ['fName','fPhone','fAddr','fNote'].forEach(id=>{
+    document.getElementById(id).value='';
+    document.getElementById(id).classList.remove('err');
+  });
+  ['fNameErr','fPhoneErr','fAddrErr'].forEach(id=>document.getElementById(id).classList.remove('show'));
+  document.getElementById('orderOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeOrder(){document.getElementById('orderOverlay').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('orderOverlay').addEventListener('click',function(e){if(e.target===this)closeOrder();});
+
+function sendOrder(){
+  const name=document.getElementById('fName').value.trim();
+  const phone=document.getElementById('fPhone').value.trim();
+  const addr=document.getElementById('fAddr').value.trim();
+  const note=document.getElementById('fNote').value.trim();
+  let ok=true;
+  const chk=(v,f,err)=>{
+    if(!v){document.getElementById(f).classList.add('err');document.getElementById(err).classList.add('show');ok=false;}
+    else{document.getElementById(f).classList.remove('err');document.getElementById(err).classList.remove('show');}
+  };
+  chk(name,'fName','fNameErr');chk(phone,'fPhone','fPhoneErr');chk(addr,'fAddr','fAddrErr');
+  if(!ok){toast('⚠️ Completa los campos obligatorios');return;}
+  const items=Object.values(cart);
+  const total=items.reduce((s,i)=>s+i.price*i.qty,0);
+  const msg=`🛍️ *NUEVO PEDIDO — CHULO SHOP*\n━━━━━━━━━━━━━━━━━━\n`+
+    `👤 *Nombre:* ${name}\n📞 *Tel:* ${phone}\n🏠 *Dir:* ${addr}\n`+
+    (note?`📝 *Nota:* ${note}\n`:'')+`━━━━━━━━━━━━━━━━━━\n`+
+    items.map(i=>`• ${i.name}\n  🎨 Color: ${i.color} | 📏 Talla/N°: ${i.size} | ×${i.qty} | ${fmt(i.price*i.qty)}`).join('\n')+
+    `\n━━━━━━━━━━━━━━━━━━\n💰 *TOTAL: ${fmt(total)}*\n`+
+    `📅 ${new Date().toLocaleString('es-CU')}\n\n¡Hola! Quiero confirmar este pedido 😊`;
+  window.open(`https://wa.me/5355562204?text=${encodeURIComponent(msg)}`,'_blank');
+  toast('✅ Abriendo WhatsApp...');
+  closeOrder();toggleCart();
+  cart={};updateCart();render();updateWishPanel();
+}
+
+/* ══════════ TOAST ══════════ */
+let toastT;
+function toast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg;el.classList.add('show');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>el.classList.remove('show'),2800);
+}
+
+/* ══════════ INIT ══════════ */
+initTheme();
+updateCart();
+updateWishPanel();
+render();
+startShowcase();
+</script>
+</body>
+</html>
